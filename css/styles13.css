@@ -1,0 +1,377 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+p {
+  text-indent: 15px;
+  text-align: justify;
+}
+
+div {
+  padding: 10px 10px;
+}
+
+/* Example */
+
+@media screen {
+  body {
+    margin: 10px 10px;
+    background-color: lightblue;
+  }
+}
+
+/* Example */
+
+@media screen and (min-width: 900px) {
+  .body0 {
+    height: 150px;
+    position: relative;
+    z-index: 1;
+    background-color: orange;
+  }
+}
+
+/* Example */
+
+/* Base style with orange color. */
+.body1 {
+  height: 400px;
+  position: relative;
+  z-index: 1;
+  background-color: orange;
+}
+
+/* The color green is at 600px or wider. */
+@media (min-width: 600px) {
+  .body1 {
+    position: relative;
+    z-index: 1;
+    background-color: #4caf50;
+  }
+}
+
+/* The color blue is at 900px or wider. */
+@media (min-width: 900px) {
+  .body1 {
+    position: relative;
+    z-index: 1;
+    background-color: blue;
+  }
+}
+
+/* Example */
+
+/* Se va aplica atunci când lățimea ferestrei de vizualizare este mai mare de 900 px */
+@media (min-width: 900px) {
+  .body2 {
+    height: 290px;
+    background-color: green;
+  }
+}
+
+/* Se va aplica atunci când lățimea ferestrei de vizualizare este mai mică de 600 px */
+@media (max-width: 600px) {
+  .body2 {
+    position: relative;
+    z-index: 1;
+    background-color: yellow;
+  }
+}
+
+/* Example */
+
+.body3 {
+  background-color: #fff;
+}
+
+@media screen and (max-width: 600px) {
+  .body3 {
+    position: relative;
+    z-index: 1;
+    height: 350px;
+    background-color: #ffc107;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .body3 {
+    background-color: #388e3c;
+  }
+}
+
+/* Example */
+
+@media screen and (min-width: 400px) and (max-width: 800px) {
+  .body4 {
+    position: relative;
+    z-index: 1;
+    height: 200px;
+    background-color: red;
+  }
+}
+
+/* Example */
+
+@media (max-width: 600px), (min-width: 900px) {
+  .body5 {
+    position: relative;
+    z-index: 1;
+    height: 200px;
+    background-color: orange;
+  }
+}
+
+/* Example */
+
+/* Nu se va îndeplini niciodată */
+@media not (max-width: 500px) {
+  /* ... */
+}
+
+/* Se va îndeplini dacă lățimea va fi mai mare de 500px. */
+@media not screen and (max-width: 500px) {
+  .body6 {
+    position: relative;
+    z-index: 1;
+    height: 500px;
+    background-color: tomato;
+  }
+}
+
+/*
+   În acest caz, pentru o citire mai ușoară a codului,
+   este mai bine de folosit min-width: 500px.
+*/
+@media (min-width: 500px) {
+  .body6 {
+    background-color: tomato;
+  }
+}
+
+/* Example */
+
+/* Stilul de bază */
+.body7 {
+  position: relative;
+  z-index: 1;
+  height: 300px;
+  background-color: #fff;
+}
+
+/* La 900px și mai lat redefiniți fundalul  */
+@media screen and (min-width: 900px) {
+  .body7 {
+    background-color: #388e3c;
+  }
+}
+
+/* Example */
+
+/* Base styles */
+.body8 {
+  position: relative;
+  z-index: 1;
+  height: 500px;
+  color: #2a2a2a;
+  background-color: #fff;
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: sans-serif;
+}
+
+/* From 600px and wider, override the background, font and color. */
+@media (min-width: 600px) {
+  .body8 {
+    background-color: #2196f3;
+    font-size: 20px;
+    color: #fff;
+  }
+}
+
+/* From 900px and wider, override the background. */
+@media (min-width: 900px) {
+  .body8 {
+    background-color: #4caf50;
+  }
+}
+
+/* Example */
+
+.body9 {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+/* Common container styles. */
+.container {
+  position: relative;
+  z-index: 10;
+  min-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ffc107;
+
+  /*  Text styles  */
+  text-align: center;
+  line-height: 180px;
+  font-size: 32px;
+  white-space: nowrap;
+}
+
+/* Set the maximum width of the responsive container. */
+.container.responsive {
+  position: relative;
+  z-index: 10;
+  max-width: 1140px;
+  margin-bottom: 40px;
+}
+
+/* Set the base width of a adaptive container. */
+.container.adaptive {
+  position: relative;
+  z-index: 10;
+  max-width: 400px;
+}
+
+@media screen and (min-width: 600px) {
+  .container {
+    background-color: #00bcd4;
+  }
+  /* Change the current width of the adaptive container at each breakpoint. */
+  .container.adaptive {
+    max-width: 600px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .container {
+    background-color: #8bc34a;
+  }
+  /* Change the current width of the adaptive container at each breakpoint. */
+  .container.adaptive {
+    max-width: 900px;
+  }
+}
+
+/* Example */
+
+/* 
+ * Base container and element styles for mobile devices.
+ */
+.container1 {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-width: 1170px;
+  min-width: 320px;
+  margin: 0 auto;
+}
+
+.element {
+  position: relative;
+  z-index: 10;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 24px;
+  color: #fff;
+}
+
+/* 
+ * Override or add new styles for blocks on wider screens.
+ */
+@media screen and (min-width: 768px) {
+  .container1 {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .element {
+    flex-basis: calc((100% - 10px) / 2);
+    font-size: 32px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container1 {
+    gap: 15px;
+  }
+
+  .element {
+    flex-basis: calc((100% - 30px) / 3);
+  }
+}
+
+/*
+ * SASS loop for background color generation.
+ */
+/* $colors: "#F44336", "#3F51B5", "#4CAF50", "#00BCD4", "#E91E63", "#009688";
+
+@each $color in $colors {
+  $idx: index($colors, $color);
+
+  .element:nth-child(#{$idx}) {
+    background-color: #{$color};
+  }
+} */
+
+/* Example */
+.body10 {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+}
+
+/* 
+ * Base container and element styles for mobile devices.
+ */
+.box {
+  width: 300px;
+  height: 100px;
+  border-radius: 10px;
+  background-color: #3f51b5;
+}
+
+/*
+ * Limit border styles to 0-767 pixels.
+ */
+@media (max-width: 767px) {
+  .box {
+    border: 10px dashed rgba(0, 0, 0, 0.5);
+  }
+}
+
+/*
+ * Tablet styles
+ */
+@media (min-width: 768px) {
+  .box {
+    background-color: #4caf50;
+  }
+}
+
+/*
+ * Limit box-shadow styles to 768-1023 pixels.
+ */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .box {
+    box-shadow: 4px 4px 4px 2px rgba(0, 0, 0, 0.8);
+  }
+}
+
+/*
+ * Desktop styles
+ */
+@media (min-width: 1024px) {
+  .box {
+    background-color: #ff9800;
+  }
+}

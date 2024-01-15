@@ -33,85 +33,927 @@
       <!-- I.Interogari media  -->
       <section>
         <h2 id="interogari">I.Interogari media</h2>
-        <p></p>
+        <p>
+          <b>Interogările media</b> – acestea permit dezvoltarea paginilor web
+          moderne și adaptabile, care arată la fel pe orice tip de dispozitiv,
+          fie este desktop sau smartphone. Totul se rezumă la implementarea unei
+          anumite reguli CSS, bazată pe dimensiunea ferestrei browserului
+          (viewport), preferințele stabilite în browser sau funcționalitățile
+          dispozitivului.
+        </p>
+        <p>Algoritmul pentru aplicarea stilurilor este următorul:</p>
+        <ul>
+          <li>
+            Developerul descrie un set de interogări media și reguli CSS în
+            interiorul acestora.
+          </li>
+          <li>
+            Browserul urmărește modificările dimensiunii ferestrei de
+            vizualizare.
+          </li>
+          <li>
+            Browserul aplică reguli CSS din interogările media, potrivite pentru
+            dimensiunea actuală a ferestrei de vizualizare.
+          </li>
+          <p>
+            Adică, interogările media sunt instrucțiuni de forma: "Când pagina
+            este deschisă pe desktop, vreau ca textul să fie roșu, iar când este
+            deschisă pe telefon, verde".
+          </p>
+        </ul>
         <ol>
           <li>
             <h3 id="sintaxa">Sintaxa</h3>
+            <p>
+              @media media-type and (media-feature) { <br />
+              /* * Un set de reguli CSS, care urmează să fie aplicate
+              documentului * dacă sunt îndeplinite condițiile tipului media și
+              ale expresiei. */ }
+            </p>
+            <p>
+              O interogare media este o construcție CSS specială declarată prin
+              directiva @media, care poate fi urmată de tipul dispozitivului
+              (media-type) și funcția media (media-feature) – expresii care
+              verifică caracteristicile dispozitivului (de exemplu, lățimea
+              ferestrei de vizualizare). Funcția media este o expresie logică
+              care returnează "adevărat" sau "fals".
+            </p>
+            <p>
+              De exemplu, dacă doriți să faceți portocaliu fundalul pentru
+              (body), cu o lățime a ferestrei de vizualizare de 900px sau mai
+              lată, veți scrie următoarea interogare media, așa cum e mai jos.
+            </p>
+
+            <!-- Exemplu -->
+            <div class="body0">
+              <p><b>Exemplu :</b></p>
+              <p>
+                @media screen and (min-width: 900px) { <br />
+                body { <br />
+                background-color: light-blue;<br />
+                } <br />
+                }
+              </p>
+            </div>
+
+            <p>
+              Pe românește, acest lucru poate fi citit ca: "Dacă pagina este
+              afișată pe un ecran cu o lățime de cel puțin 900 de pixeli,
+              trebuie aplicată regula CSS specificată".
+            </p>
+            <p>
+              Accesați pagina exemplu făcând click pe Edit on Codepen, în colțul
+              din dreapta sus al editorului și modificați lățimea zonei cu
+              rezultatul. Culoarea de fundal a (body) se va schimba în funcție
+              de lățimea ferestrei de vizualizare specificată în interogările
+              media.
+            </p>
+
+            <!-- Exemplu -->
+            <div class="body1">
+              <p><b>Exemplu :</b></p>
+              <p>
+                /* Base style with orange color. */ <br />
+                body { <br />
+                background-color: orange; <br />
+                } <br />
+                <br />
+                /* The color green is at 600px or wider. */ <br />
+                @media (min-width: 600px) { <br />
+                body { <br />
+                background-color: #4caf50; <br />
+                } <br />
+                } <br />
+                <br />
+                /* The color blue is at 900px or wider. */ <br />
+                @media (min-width: 900px) { <br />
+                body { <br />
+                background-color: blue; <br />
+                } <br />
+                }
+              </p>
+            </div>
+
+            <p>
+              Condiția de testare poate fi la fel de complexă sau simplă pe cât
+              o cere situația. În cele mai multe cazuri, este suficient să
+              specificați tipul media al dispozitivului (cel mai des screen) și
+              să verificați doar lățimea ferestrei de vizualizare.
+            </p>
+            <p><b>Exemplu :</b></p>
+            <p>
+              /* Această interogare media va fi aplicată la tipărirea unui
+              document. */ <br />
+              @media print { <br />
+              /* ... */ <br />
+              } <br />
+              <br />
+              /* Această interogare media va fi aplicată atunci când lățimea
+              ferestrei de <br />
+              vizualizare depășește 400px. <br />
+              */ <br />
+              @media screen and (min-width: 400px) { <br />
+              /* ... */ <br />
+              } <br />
+              <br />
+              /* <br />
+              Tipul screen poate fi omis dacă stilurile sunt scrise numai
+              <br />pentru ecrane. <br />
+              */ <br />
+              @media (min-width: 400px) { <br />
+              /* ... */ <br />
+              }
+            </p>
           </li>
           <li>
             <h3 id="tipurile">Tipurile media</h3>
+            <p>
+              Tipul media este folosit pentru a descrie tipul dispozitivului pe
+              care poate fi afișată o pagină web. În total, există trei tipuri
+              care sunt suportate de toate browserele moderne.
+            </p>
+            <ul>
+              <li>
+                <b>all</b> – dacă nu este specificat tipul media, această
+                valoare va fi folosită implicit, ceea ce înseamnă orice
+                dispozitiv.
+              </li>
+              <li>
+                <b>print</b> – corespunde imprimantelor și dispozitivelor
+                concepute pentru a reproduce versiunea tipărită, de exemplu, un
+                browser web care afișează un document în modul "Previzualizare".
+              </li>
+              <li>
+                <b>screen</b> – descrie dispozitivele cu ecran fizic:
+                smartphone-uri, tablete, monitoare, televizoare etc. Adică tot
+                ceea ce nu cuprinde tipul print.
+              </li>
+            </ul>
           </li>
           <li>
             <h3 id="functii">Functii media</h3>
+            <p>
+              Două dintre cele mai frecvent utilizate caracteristici media sunt
+              min-width și max-width, care ne permit să definim lățimea
+              ferestrei de vizualizare a browserului. Se specifică lățimea
+              minimă (min-width) sau maximă (max-width) permisă la care sunt
+              aplicate regulile din interogările media.
+            </p>
+
+            <!-- Exemplu -->
+            <div class="body2">
+              <p><b>Exemplu :</b></p>
+              <p>
+                /* Se va aplica atunci când lățimea ferestrei de vizualizare
+                este mai mare de 900 px */ <br />
+                @media (min-width: 900px) { <br />
+                body { <br />
+                background-color: green; <br />
+                } <br />
+                } <br />
+                <br />
+                /* Se va aplica atunci când lățimea ferestrei de vizualizare
+                este mai mică de 600 px */ <br />
+                @media (max-width: 600px) { <br />
+                body { <br />
+                background-color: yellow; <br />
+                } <br />
+                }
+              </p>
+            </div>
+
+            <p>
+              Dacă ne imaginăm lățimea ferestrei ca o linie dreaptă de la 0 la
+              infinit, atunci descriem un interval pe care trebuie să aplicăm
+              anumite stiluri.
+            </p>
+            <p><b>UTIL :</b></p>
+            <p>
+              Dimensiunea ferestrei de vizualizare conform cărei întregul layout
+              sau părțile sale individuale își schimbă stilul, adică se modifică
+              designul, se numește <b>punct de întrerupere (breakpoint)</b>.
+            </p>
+            <p>
+              La schimbarea lățimii ferestrei de vizualizare din exemplu, până
+              la 600px fundalul (body) va fi galben, iar după 900px va fi verde.
+              Între 601 px și 899 px, culoarea este albă, fiind o valoare
+              implicită, deoarece niciuna dintre interogările media nu se va
+              potrivi.
+            </p>
+            <!-- Exemplu -->
+            <div class="body3">
+              <p><b>Exemplu :</b></p>
+              <p>
+                body { <br />
+                background-color: #fff; <br />
+                } <br />
+                <br />
+                @media screen and (max-width: 600px) { <br />
+                body { <br />
+                background-color: #ffc107; <br />
+                } <br />
+                } <br />
+                <br />
+                @media screen and (min-width: 900px) { <br />
+                body { <br />
+                background-color: #388e3c; <br />
+                } <br />
+                }
+              </p>
+            </div>
+            <p>
+              Deci, cum am putea seta un interval între 600px și 900px? Trebuie
+              să utilizăm operatorii logici pentru funcțiile media compozite.
+            </p>
           </li>
           <li>
             <h3 id="logici">Operatorii logici</h3>
+            <p>
+              Tipul media și funcțiile media pot fi separate prin operatori
+              logici opționali not, and și only – valoarea implicită. Sintaxa
+              completă pentru o interogare media este următoarea.
+            </p>
+            <p>
+              @media only|not media-type only|and|not (media-feature) { <br />
+              /* Un set de reguli CSS care urmează să fie aplicate documentului
+              <br />
+              dacă sunt îndeplinite condițiile tipului media și a expresiei. */
+              <br />
+              }
+            </p>
           </li>
           <li>
             <h3 id="and">Operatorul and</h3>
+            <p>
+              Operatorul and (literal "ȘI") nu este folosit numai între tipul
+              media și condiția media, ci și pentru a lega mai multe funcții
+              media cu verificări de valoare.
+            </p>
+
+            <!-- Exemplu -->
+            <div class="body4">
+              <p><b>Exemplu :</b></p>
+              <p>
+                @media screen and (min-width: 400px) and (max-width: 800px) {
+                <br />
+                body { <br />
+                background-color: red; <br />
+                } <br />
+                }
+              </p>
+            </div>
+            <p>
+              Această interogare media va fi executată numai dacă pagina web
+              este deschisă pe ecran și lățimea ferestrei de vizualizare este
+              între 400px și 800px.
+            </p>
           </li>
           <li>
             <h3 id="operatorul">Operatorul ,</h3>
+            <p>
+              Operatorul , (literalmente "SAU"), permite specificarea unui set
+              de expresii, iar la îndeplinirea oricăreia dintre acestea, se va
+              executa interogarea media.
+            </p>
+            <p>
+              De exemplu, stilurile trebuie aplicate până la 600px și de la
+              900px.
+            </p>
+
+            <!-- Exemplu -->
+            <div class="body5">
+              <p><b>Exemplu :</b></p>
+              <p>
+                @media (max-width: 600px), (min-width: 900px) { <br />
+                body { <br />
+                background-color: orange; <br />
+                } <br />
+                }
+              </p>
+            </div>
+
+            <p>
+              Cu alte cuvinte, acest cod este o enumerare a interogărilor media
+              sub care ar trebui să se aplice stilurile specifice. Această
+              construcție oferă un mod compact de a exprima ceea ce ar putea
+              necesita două interogări media separate, eliminând astfel
+              duplicarea codului pentru elementul (body).
+            </p>
+            <p>
+              @media (max-width: 600px) { <br />
+              body { <br />
+              background-color: orange; <br />
+              } <br />
+              } <br />
+              <br />
+              @media (min-width: 900px) { <br />
+              body { <br />
+              background-color: orange; <br />
+              } <br />
+              }
+            </p>
+            <p><b>UTIL :</b></p>
+            <p>
+              În versiunile viitoare CSS, operatorul <b>,</b> va fi înlocuit cu
+              operatorul <b>or</b>.
+            </p>
           </li>
           <li>
             <h3 id="not">Operatorul not</h3>
+            <p>
+              Operatorul not (literalmente "NU"), permite anularea unei
+              interogări media. Cuvântul cheie not este adăugat la începutul
+              interogării media și se aplică întregii interogări media. Acesta
+              este folosit foarte rar, doar în anumite cazuri specifice.
+            </p>
+            <p>
+              De exemplu, să scriem o condiție în care stilurile ar trebui
+              aplicate peste tot, cu excepția tipăririi.
+            </p>
+            <p>
+              @media not print { <br />
+              /* ... */ <br />
+              }
+            </p>
+            <p>
+              Când se utilizează operatorul <b>not</b>, neapărat trebuie
+              specificat tipul dispozitivului. În mod implicit, acesta va fi
+              setat la <b>all</b>, ceea ce înseamnă că expresia va fi citită ca
+              <b>not all</b>, iar interogarea media nu va fi executată
+              niciodată.
+            </p>
+
+            <!-- Exemplu -->
+            <div class="body6">
+              <p><b>Exemplu :</b></p>
+              <p>
+                /* Nu se va îndeplini niciodată */ <br />
+                @media not (max-width: 500px) { <br />
+                /* ... */ <br />
+                } <br />
+                <br />
+                /* Se va îndeplini dacă lățimea va fi mai mica de 500px. */
+                <br />
+                @media not screen and (max-width: 500px) { <br />
+                body { <br />
+                background-color: tomato; <br />
+                } <br />
+                } <br />
+                <br />
+                /* <br />
+                În acest caz, pentru o citire mai ușoară a codului, <br />
+                este mai bine de folosit min-width: 500px. <br />
+                */ <br />
+                @media (min-width: 500px) { <br />
+                body { <br />
+                background-color: tomato; <br />
+                } <br />
+                }
+              </p>
+            </div>
           </li>
           <li>
             <h3 id="stilurilor">Redefinirea stilurilor</h3>
+            <p>
+              Browserul poate aplica simultan mai multe interogări media dacă
+              îndeplinesc condițiile specificate. Interogările media nu măresc
+              specificitatea selectorilor pe care îi includ, însă ordinea în
+              care sunt plasate regulile rămâne crucială. Acest lucru înseamnă
+              că regulile definite în interogările media sunt supuse aceluiași
+              proces de cascadă ca și regulile standard, în determinarea
+              stilurilor finale ale unui element.
+            </p>
+
+            <!-- Exemplu -->
+            <div class="body7">
+              <p><b>Exemplu :</b></p>
+              <p>
+                /* Stilul de bază */ <br />
+                body { <br />
+                background-color: #fff; <br />
+                } <br />
+                <br />
+                /* La 900px și mai lat redefiniți fundalul */ <br />
+                @media screen and (min-width: 900px) { <br />
+                body { <br />
+                background-color: #388e3c; <br />
+                } <br />
+                }
+              </p>
+            </div>
+
+            <p>
+              În instrumentele de dezvoltare, puteți vedea clar cum sunt
+              aplicate regulile CSS și cum este redefinită culoarea de fundal a
+              elementului (body).
+            </p>
+            <p>
+              În acest caz, sunt redefinite doar aceleași proprietăți, și nu
+              întreaga regulă. Datorită acestui lucru, puteți face un tort
+              stratificat din stiluri fără a le duplica pe cele anterioare, care
+              sunt, de asemenea, potrivite pentru interogarea media actuală.
+            </p>
+
+            <!-- Exemplu -->
+            <div class="body8">
+              <p><b>Exemplu :</b></p>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Corporis aut adipisci illo eveniet dolorem similique ipsam,
+                error eum beatae soluta ullam expedita, accusamus voluptatibus.
+                Similique vero, saepe praesentium dicta cupiditate, accusantium,
+                quasi voluptates ipsam cum blanditiis eligendi. Dolorum quis
+                inventore molestiae laboriosam aut tempore delectus expedita
+                dicta doloribus, quisquam velit in minus tenetur non pariatur.
+                Nihil corporis nemo alias repellendus cupiditate fugiat ullam
+                soluta, quia placeat assumenda vero culpa quo ducimus
+                necessitatibus qui ratione sit natus omnis voluptate aliquam
+                voluptates optio quod. Fugit sit, amet aspernatur dolor
+                molestias quia. Nobis corporis laborum ratione architecto in
+                doloribus totam at minima veniam?
+              </p>
+            </div>
+
+            <p>
+              /* Base styles * <br />
+              body { <br />
+              color: #2a2a2a; <br />
+              background-color: #fff; <br />
+              font-size: 16px; <br />
+              line-height: 1.5; <br />
+              font-family: sans-serif; <br />
+              } <br />
+              <br />
+              /* From 600px and wider, override the background, font and
+              <br />color. */ <br />
+              @media (min-width: 600px) { <br />
+              body { <br />
+              background-color: #2196f3; <br />
+              font-size: 20px; <br />
+              color: #fff; <br />
+              } <br />
+              } <br />
+              <br />
+              /* From 900px and wider, override the background. */ <br />
+              @media (min-width: 900px) { <br />
+              body { <br />
+              background-color: #4caf50; <br />
+              } <br />
+              }
+            </p>
+            <p>
+              Așa va arăta elementul (body) în devTools, atunci când lățimea
+              ferestrei de vizualizare va depăși 900px.
+            </p>
           </li>
         </ol>
-
-        <!-- Exemplu -->
-        <div>
-          <p><b>Exemplu :</b></p>
-        </div>
       </section>
 
       <!-- II.Meta tag-ul viewport
   -->
       <section>
         <h2 id="viewport">II.Meta tag-ul viewport</h2>
-        <p></p>
-
-        <!-- Exemplu -->
-        <div>
-          <p><b>Exemplu :</b></p>
-        </div>
+        <p>
+          <b>Zona de vizualizare (fereastră de vizualizare, viewport)</b> – o
+          zonă dreptunghiulară vizibilă a unei pagini web care nu include bara
+          de adrese, bara de marcaje și alte elemente de serviciu ale
+          browserului.
+        </p>
+        <p>
+          Browserele mobile afișează o pagină web într-o fereastră de
+          vizualizare care este mai lată decât ecranul fizic al dispozitivului.
+          În mod implicit, lățimea ferestrei de vizualizare a browserelor mobile
+          depinde de producător, nu coincide cu dimensiunea ecranului
+          dispozitivului și, de cele mai multe ori, este egală cu 980px. Aceasta
+          înseamnă că browserul mobil consideră aceasta o valoare față de care
+          ar trebui să aplice interogări media.
+        </p>
+        <p>
+          Asta înseamnă că interogările media create pentru dispozitive mobile
+          nu vor fi pur și simplu aplicate sau redefinite pe un browser mobil.
+          Dacă, de exemplu, o pagină web este deschisă pe un ecran cu lățimea de
+          400px, o interogare media cu min-width: 768px se va aplica,
+          suprascriind astfel stilurile pentru dispozitivele mobile. Rezultatul
+          va fi că, deși pagina este vizualizată pe un telefon, vom vedea
+          versiunea pentru tabletă a site-ului.
+        </p>
+        <p>
+          Paginile adaptate pentru vizualizarea pe diferite dispozitive ar
+          trebui să conțină meta tag-ul viewport în secțiunea (head). Aceasta
+          spune browserului cum trebuie să controleze dimensiunea și scara
+          ferestrei de vizualizare.
+        </p>
+        <p>
+          &lt;head&gt; <br />
+          &lt;!-- Alte meta tag-uri --&gt;<br />
+          &lt;meta name="viewport" content="width=device-width,
+          initial-scale=1.0" /&gt;
+          <br />
+          &lt;title&gt;Meta tag-ul viewport este important pentru paginile
+          adaptive&lt;/title&gt;<br />
+          &lt;/head&gt;
+        </p>
+        <ul>
+          <li>
+            width=device-width – setează lățimea ferestrei de vizualizare
+            (width) egală cu lățimea fizică a ecranului dispozitivului
+            (device-width).
+          </li>
+          <li>
+            initial-scale=1.0 – setează raportul (scara) 1:1 între pixelii CSS
+            și pixelii hardware ai dispozitivului.
+          </li>
+        </ul>
       </section>
 
       <!-- III.Instrumentele de dezvoltare
   -->
       <section>
         <h2 id="dezvoltare">III.Instrumentele de dezvoltare</h2>
-        <p></p>
-
-        <!-- Exemplu -->
-        <div>
-          <p><b>Exemplu :</b></p>
-        </div>
+        <p>
+          Pentru a trece la modul adaptiv în browserul Chrome, trebuie să
+          deschideți instrumentele de dezvoltare și să dați click pe iconița 1.
+          Vor apărea instrumente suplimentare pentru lucrul cu machetarea
+          adaptivă. Pentru a ieși din acest mod, trebuie să dați din nou click
+          pe iconița 1.(pentru a intra in modul viewport
+          tablete,telefoane,e.t.c)
+        </p>
+        <p>
+          Pentru a modifica lățimea ferestrei de vizualizare printr-o acțiune de
+          întindere, se utilizează elementul 2. Efectul resimțit este similar cu
+          întinderea sau contractarea fizică a ferestrei browserului, rezultând
+          astfel în modificarea lățimei ferestrei de vizualizare.
+        </p>
+        <p>
+          În partea de sus a instrumentelor se află un set de elemente
+          suplimentare.
+        </p>
+        <ul>
+          <li>
+            În partea de sus a instrumentelor se află un set de elemente
+            suplimentare.
+          </li>
+          <li>
+            4 – dimensiunile actuale ale lățimii și înălțimii ferestrei de
+            vizualizare. Valorile pot fi introduse manual.
+          </li>
+          <li>
+            5 – schimbarea scării, în cazul în care se lucrează cu valori mari
+            și trebuie să vedeți întreaga machetă în ansamblu.
+          </li>
+          <li>
+            6 – posibilitatea de a simula orientarea dispozitivului în modul
+            portret sau peisaj.
+          </li>
+        </ul>
+        <p>
+          Sub setul de elemente suplimentare poate fi găsit un panou pentru
+          modificarea rapidă a lățimii ferestrei de vizualizare, folosind
+          punctele de întrerupere standard.
+        </p>
       </section>
 
       <!-- IV.Tipuri de layout
   -->
       <section>
         <h2 id="layout">IV.Tipuri de layout</h2>
-        <p></p>
+        <p>
+          La început, paginile web erau proiectate cu un layout fix. Dacă un
+          container era setat la o lățime de 1200 de pixeli, aceasta rămânea
+          constantă la 1200 de pixeli, indiferent de dimensiunea ecranului pe
+          care era afișat, fie că era mare sau mic. Cu evoluția și
+          diversificarea dispozitivelor mobile moderne, această abordare a
+          devenit depășită și nepotrivită pentru nevoile actuale.
+        </p>
+        <p>
+          În design-ul web modern sunt folosite noi abordări pentru a crea
+          site-uri web. Acestea combină elemente "fluide" de layout și tehnici
+          moderne noi, cum ar fi adaptiv (adaptive) și receptiv (responsive).
+          Tehnicile de layout "adaptive" și "receptive" diferă prin modul în
+          care este setată lățimea containerului și elementele incluse în
+          acesta.
+        </p>
+        <p>
+          <b>Pagina web receptivă (responsive)</b> – are mai multe opțiuni de
+          afișare, tranzițiile dintre ele sunt line, elementele și containerul
+          sunt foarte elastice. Atunci când se modifică dimensiunea ferestrei de
+          vizualizare, secțiunile sunt comprimate sau întinse, fără probleme,
+          iar când apare un punct de întrerupere (breakpoint), își schimbă
+          locația, astfel încât, să ocupe în mod optim tot spațiul liber pe
+          orizontală.
+        </p>
+        <p>
+          <b>Pagina web adaptivă (adaptive)</b> – are mai multe opțiuni de
+          afișare și, se deosebește de o pagină receptivă, la propriu. Designul
+          este schimbat de salturi setate strict între punctele de întrerupere
+          și nu se întinde între ele.
+        </p>
+        <p><b>ATENTIE : </b></p>
+        <p>
+          La scrierea unor interogări media, trebuie să vă concentrați pe
+          punctele de întrerupere ale designului, adică acele valori ale lățimii
+          ferestrei în care designul se modifică semnificativ. Acestea le puteți
+          identifica după layout-ul creat de designer.
+        </p>
+        <p>
+          Urmăriți link-ul către versiunea completă a exemplului și modificați
+          lățimea zonei cu rezultatul, astfel încât, să puteți vedea diferența
+          dintre containerele receptive și adaptive. Culoarea containerelor se
+          schimbă la fiecare dintre punctele de întrerupere alese aleatoriu de
+          600, 900 și 1140 de pixeli.
+        </p>
 
         <!-- Exemplu -->
-        <div>
+        <div class="body9">
           <p><b>Exemplu :</b></p>
+          <div class="container responsive">
+            <p class="label">I'm a responsive container</p>
+          </div>
+          <div class="container adaptive">
+            <p class="label">I'm an adaptive container</p>
+          </div>
         </div>
+
+        <p>
+          Proprietatea min-width este setată pe ambele containere – lățimea
+          minimă a ferestrei de vizualizare, sub care designul nu este suportat.
+          Pentru utilizator cu un ecran mai îngust se va afișa o bară de
+          scrolare orizontală.
+        </p>
+        <p>
+          .container { <br />
+          min-width: 320px;<br />
+          }
+        </p>
+        <p>
+          Proprietatea max-width este setată pe containerul receptiv în
+          stilurile de bază, astfel încât să poată fi întinsă liber, dar să nu
+          depășească valoarea specificată.
+        </p>
+        <p>
+          .container.responsive { <br />
+          max-width: 1140px;<br />
+          }
+        </p>
+        <p>
+          Containerului adaptiv i se dă o valoare inițială a lățimii maxime,
+          care este apoi redefinită la fiecare punct de întrerupere.
+        </p>
+        <p>
+          /* Setăm lățimea de bază a containerului adaptiv */ <br />
+          .container.adaptive { <br />
+          max-width: 320px; <br />
+          } <br />
+          <br />
+          @media screen and (min-width: 600px) { <br />
+          .container.adaptive { <br />
+          max-width: 600px; <br />
+          } <br />
+          } <br />
+          <br />
+          @media screen and (min-width: 900px) { <br />
+          .container.adaptive { <br />
+          max-width: 900px; <br />
+          } <br />
+          } <br />
+          <br />
+          @media screen and (min-width: 1140px) { <br />
+          .container.adaptive { <br />
+          max-width: 1140px; <br />
+          } <br />
+          }
+        </p>
+        <p>
+          Ce abordare ar trebui să alegeți? Alegerea depinde de designul dorit,
+          de tipul site-ului web și de bugetul clientului. Pentru majoritatea
+          site-urilor destinate întreprinderilor mici și mijlocii, o versiune
+          adaptivă poate fi suficientă. În schimb, designul receptiv, deși mai
+          costisitor în ceea ce privește crearea layoutului și dezvoltarea,
+          deoarece este mai complicat și necesită mai mult timp pentru a fi
+          realizat, devine indispensabil în contextul aplicațiilor web moderne.
+          Uneori, cerințele de afaceri sunt mai bine îndeplinite printr-o
+          versiune mobilă specializată sau chiar printr-o aplicație nativă,
+          decât printr-un site web tradițional.
+        </p>
       </section>
 
       <!-- V.Abordarea Mobile First
   -->
       <section>
         <h2 id="abordarea">V.Abordarea Mobile First</h2>
-        <p></p>
+        <p>
+          Din punct de vedere istoric, designerii au început să dezvolte
+          site-uri web pentru ecrane mari, deoarece primul și principalul design
+          a fost realizat pentru desktop-uri, întrucât acestea ofereau o mulțime
+          de funcționalități.
+        </p>
+        <p>
+          Problema acestei abordări este că se acordă prioritate utilizatorilor
+          de desktop și laptop-uri, deși acum, conform statisticilor, domină
+          traficul mobil. Multe elemente de design și funcționalitate care arată
+          și funcționează grozav pe desktop pot fi dificil de transpus pe un
+          ecran mobil.
+        </p>
+        <p>
+          Abordarea Mobile First începe invers – se realizează mai întâi
+          versiunea mobilă, apoi versiunea pentru tabletă și desktop. Acest
+          lucru face ca informațiile actualizate să fie ușor accesibile și vă
+          permite să ascundeți sau să schimbați elemente de pe orice ecran.
+        </p>
+        <p>
+          Un site web trebuie să fie bine optimizat pentru motoarele de căutare
+          (SEO) și să îndeplinească toate cerințele UX (user experience), astfel
+          încât vizita utilizatorului pe site să fie cât mai convenabilă și
+          ușoară de înțeles prin intermediul dispozitivului său mobil. Prin
+          urmare, una dintre cele mai importante cerințe în dezvoltarea Mobile
+          First este:
+        </p>
+        <ul>
+          <li>Să se afișeze mai întâi conținutul cel mai important.</li>
+          <li>
+            Site-ul trebuie să fie ușor și optimizat, deoarece vitezele
+            conexiunii la rețeaua mobilă pot fi lente, în funcție de locația
+            utilizatorului.
+          </li>
+          <li>
+            Site-ul web nu trebuie să încarce mai multe resurse decât are nevoie
+            utilizatorul pentru a obține informațiile necesare.
+          </li>
+          <li>
+            Informațiile suplimentare trebuie să fie încărcate numai la cererea
+            utilizatorului.
+          </li>
+          <p>
+            La dezvoltarea unui site web, această abordare are mari avantaje.
+          </p>
+          <ul>
+            <li>
+              <b>Un singur site web </b>– un singur proiect pentru toate
+              dispozitivele. Reduce numărul necesar de developeri.
+            </li>
+            <li>
+              <b>Interfața ușor de utilizat</b> – utilizatorii vor primi în
+              primul rând conținutul cel mai important al paginii.
+            </li>
+            <li>
+              <b>Viteza de încărcare</b> – pagina se va încărca mai repede pe
+              dispozitivele mobile datorită faptului că numărul de resurse
+              încărcate și afișate va fi mai mic.
+            </li>
+            <li>
+              <b>Clasamentul căutării</b> – de exemplu, Google, nu numai că dă
+              prioritate site-urilor optimizate pentru dispozitive mobile, ci ia
+              în considerare și timpul de deschidere a paginilor.
+            </li>
+          </ul>
+        </ul>
+        <ol>
+          <li>
+            <h3 id="first">Mobile-first CSS</h3>
+            <p>
+              Din punct de vedere tehnic, implementarea Mobile First este destul
+              de simplă – stilurile pentru dispozitivele mobile sunt stiluri de
+              bază în afara interogărilor media, după care, pentru fiecare punct
+              de întrerupere, se adaugă o interogare media în care sunt
+              redefinite stilurile de bază necesare, stiluri din intervalul
+              anterior, sau se adaugă altele noi. Prin urmare, interogările
+              media folosesc în primul rând funcția media min-width.
+            </p>
+            <p>
+              .element { <br />
+              /* Stiluri de bază */ <br />
+              } <br />
+              <br />
+              @media screen and (min-width: lățime-tabletă) { <br />
+              .element { <br />
+              /* Stiluri tabletă */ <br />
+              } <br />
+              } <br />
+              <br />
+              @media screen and (min-width: lățime-desktop) { <br />
+              .element { <br />
+              /* Stiluri desktop */ <br />
+              } <br />
+              }
+            </p>
+            <p>
+              Adică, este creată o versiune ușoară a stilurilor pentru
+              dispozitivele mobile și toate stilurile pentru ecranele mai mari
+              sunt închise în interiorul interogărilor media corespunzătoare. Cu
+              toate acestea, marcajul HTML nu se modifică.
+            </p>
+            <p>
+              Avantajul acestei abordări este că poziționarea nu trebuie setată
+              pentru stilurile mobile aproape niciodată, de exemplu cu Flexbox,
+              deoarece tot conținutul merge într-o coloană unul după altul –
+              comportamentul implicit al elementelor de tip bloc în fluxul
+              standard de documente. Asta înseamnă că poziționarea nu trebuie să
+              fie redefinită în interogările media pentru ecrane mai mari.
+            </p>
+            <p>
+              Ilustrația de mai jos prezintă structura interogărilor media și a
+              stilurilor pentru o pagină simplă, cu două puncte de întrerupere
+              stabilite la 768px și 1024px. În acest caz, regulile CSS definite
+              în interogările media fie adaugă stiluri noi, fie le suprascriu pe
+              cele existente.
+            </p>
+            <p>
+              Puteți vizualiza și modifica versiunea completă a editorului,
+              accesând link-ul furnizat, și ajustând lățimea zonei de rezultat.
+              Este important de menționat că, inițial, nu există nicio
+              interogare media @media, deoarece stilurile sunt create cu gândul
+              la un ecran îngust ca bază. Pe măsură ce adăugăm stiluri pentru
+              ecrane mai largi, vom introduce și interogările media
+              corespunzătoare.
+            </p>
 
+            <!-- Exemplu -->
+            <div class="body9">
+              <p><b>Exemplu :</b></p>
+              <div class="container1">
+                <div class="element">1</div>
+                <div class="element">2</div>
+                <div class="element">3</div>
+                <div class="element">4</div>
+                <div class="element">5</div>
+                <div class="element">6</div>
+              </div>
+              <p>Din pacate nu funcționează...! :(((</p>
+            </div>
+
+            <p>Avantajele unui marcaj de acest tip:</p>
+            <ul>
+              <li>
+                Codul CSS de bază este mai curat, deoarece la poziționarea
+                elementelor UI suntem ajutați de fluxul de documente și de
+                modelul casetei.
+              </li>
+              <li>
+                Moștenirea stilurilor de la ecranele înguste la cele late.
+              </li>
+              <li>
+                Redefinirea minimă a stilurilor de poziționare, următoarea din
+                primul punct.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h3 id="max-width">Funcția media max-width</h3>
+            <p>
+              Pentru majoritatea situațiilor, este suficient să utilizați
+              min-width și să adăugați sau să înlocuiți stiluri. Cu toate
+              acestea, există situații în care utilizarea funcției media
+              max-width face codul mai curat și mai lizibil.
+            </p>
+            <p>
+              Să ne imaginăm următoarea situație – în ultimul exemplu, pentru
+              elementele de pe dispozitivele mobile, exclusiv, adică până la
+              767px, trebuie setată o indentare inferioară (stilurile tabletei
+              încep de la 768). Iar pentru intervalul tabletei, de la 768px la
+              1023px, este necesar ca elementele să aibă un chenar.
+            </p>
+            <p>
+              Folosind numai min-width, va avea ca rezultat stilurile de
+              interogare media cu min-width: 768px, care vor trebui să reducă la
+              zero indentarea inferioară a elementelor. Iar în stilurile de
+              interogare media cu min-width: 1024px vom reseta stilurile
+              chenarelor. Aceasta nu este tocmai cea mai bună soluție.
+            </p>
+            <p>
+              .box { <br />
+              margin-bottom: 10px; <br />
+              } <br />
+              <br />
+              @media (min-width: 768px) { <br />
+              .box { <br />
+              margin-bottom: 0; <br />
+              border: 1px solid black; <br />
+              } <br />
+              } <br />
+              <br />
+              @media (min-width: 1024px) { <br />
+              .box { <br />
+              border: none; <br />
+              } <br />
+              }
+            </p>
+            <p>
+              În astfel de situații, o practică bună este să închideți anumite
+              stiluri în anumite intervale, iar funcția max-width ne va ajuta să
+              realizăm acest lucru.
+            </p>
+            <p>
+              Accesați versiunea completă a editorului, de exemplu, folosind
+              link-ul și modificați lățimea zonei cu rezultatul. Adica
+              introduceti codul in CodePen, sau folositi simple browser in Vs
+              code...!
+            </p>
+          </li>
+        </ol>
         <!-- Exemplu -->
-        <div>
+        <div class="body10">
           <p><b>Exemplu :</b></p>
+          <div class="box"></div>
         </div>
       </section>
     </main>
