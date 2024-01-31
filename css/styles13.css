@@ -4,6 +4,65 @@
   box-sizing: border-box;
 }
 
+body {
+  text-indent: 10px;
+  position: relative;
+  margin: 10px;
+  background: yellow;
+  background: linear-gradient(
+    317deg,
+    rgb(207, 192, 52) 40%,
+    rgba(31, 170, 84, 0.44) 64%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+a {
+  display: flex;
+  text-decoration: none;
+  color: blue;
+  transition: text-decoration, color 500ms ease-in-out;
+}
+
+a:hover,
+a:focus {
+  color: red;
+  text-decoration: underline;
+}
+
+/* After & before */
+
+a::before,
+a::after {
+  content: "";
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+  transition: display, color 500ms ease-in-out;
+}
+
+/* Adds and hides eyes icon after the link text */
+
+a::before {
+  margin-right: 16px;
+  background-image: url("https://cdn-icons-png.flaticon.com/512/599/599516.png");
+  display: inline;
+}
+
+a::after {
+  display: none;
+  margin-left: 16px;
+  background-image: url("https://cdn-icons-png.flaticon.com/512/599/599516.png");
+}
+
+/* Show arrow icon on hover */
+a:hover::after {
+  display: inline-block;
+}
+
+a:hover::before {
+  display: none;
+}
+
 p {
   text-indent: 15px;
   text-align: justify;
